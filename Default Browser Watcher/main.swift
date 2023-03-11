@@ -9,9 +9,14 @@ import Foundation
 import AppKit
 
 // Grab the Vercel API token from environment
-guard let vercelApiToken = ProcessInfo.processInfo.environment["VERCEL_API_TOKEN"],
-      let vercelEdgeConfigId = ProcessInfo.processInfo.environment["VERCEL_EDGE_CONFIG_ID"] else {
-    print("Missing env var \"VERCEL_API_TOKEN\" or \"VERCEL_EDGE_CONFIG_ID\". Bye bye...")
+guard let vercelApiToken = ProcessInfo.processInfo.environment["VERCEL_API_TOKEN"] else {
+    print("Missing env var \"VERCEL_API_TOKEN\". Bye bye...")
+    exit(0)
+}
+
+// Grab Edge Config ID from environment
+guard let vercelEdgeConfigId = ProcessInfo.processInfo.environment["VERCEL_EDGE_CONFIG_ID"] else {
+    print("Missing env var \"VERCEL_EDGE_CONFIG_ID\". Bye bye...")
     exit(0)
 }
 
@@ -45,6 +50,8 @@ signal(SIGINT) { signal in
     print("\nBye bye...")
     exit(0)
 }
+
+print("Watching for changes in the default browser setting...")
 
 while true {
     // Get the URL of the current default browser
@@ -80,14 +87,14 @@ while true {
         
         // Submit the request asynchronously
         let task = session.dataTask(with: request) { (data, response, error) in
-            if let data = data, let output = String(data: data, encoding: .utf8) {
-                print(output)
-            }
-            
             if let error = error {
                 print("Error submitting default browser data:", error.localizedDescription)
-            } else {
+            } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
                 print("Default browser data submitted successfully.")
+            } else {
+                if let data = data, let output = String(data: data, encoding: .utf8) {
+                    print(output)
+                }
             }
         }
         task.resume()
