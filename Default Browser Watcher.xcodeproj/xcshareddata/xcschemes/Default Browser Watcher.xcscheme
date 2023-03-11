@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "54B3AB8329BB37EF00334408"
-               BuildableName = "Default Browser Watcher"
-               BlueprintName = "Default Browser Watcher"
+               BuildableName = "default-browser-watcher"
+               BlueprintName = "default-browser-watcher"
                ReferencedContainer = "container:Default Browser Watcher.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "54B3AB8329BB37EF00334408"
-            BuildableName = "Default Browser Watcher"
-            BlueprintName = "Default Browser Watcher"
+            BuildableName = "default-browser-watcher"
+            BlueprintName = "default-browser-watcher"
             ReferencedContainer = "container:Default Browser Watcher.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "54B3AB8329BB37EF00334408"
-            BuildableName = "Default Browser Watcher"
-            BlueprintName = "Default Browser Watcher"
+            BuildableName = "default-browser-watcher"
+            BlueprintName = "default-browser-watcher"
             ReferencedContainer = "container:Default Browser Watcher.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

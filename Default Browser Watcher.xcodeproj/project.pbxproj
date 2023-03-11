@@ -23,7 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		54B3AB8429BB37EF00334408 /* Default Browser Watcher */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Default Browser Watcher"; sourceTree = BUILT_PRODUCTS_DIR; };
+		54B3AB8429BB37EF00334408 /* default-browser-watcher */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "default-browser-watcher"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B3AB8729BB37EF00334408 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,7 +49,7 @@
 		54B3AB8529BB37EF00334408 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				54B3AB8429BB37EF00334408 /* Default Browser Watcher */,
+				54B3AB8429BB37EF00334408 /* default-browser-watcher */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,9 +65,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		54B3AB8329BB37EF00334408 /* Default Browser Watcher */ = {
+		54B3AB8329BB37EF00334408 /* default-browser-watcher */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 54B3AB8B29BB37EF00334408 /* Build configuration list for PBXNativeTarget "Default Browser Watcher" */;
+			buildConfigurationList = 54B3AB8B29BB37EF00334408 /* Build configuration list for PBXNativeTarget "default-browser-watcher" */;
 			buildPhases = (
 				54B3AB8029BB37EF00334408 /* Sources */,
 				54B3AB8129BB37EF00334408 /* Frameworks */,
@@ -77,9 +77,9 @@
 			);
 			dependencies = (
 			);
-			name = "Default Browser Watcher";
+			name = "default-browser-watcher";
 			productName = "Default Browser Watcher";
-			productReference = 54B3AB8429BB37EF00334408 /* Default Browser Watcher */;
+			productReference = 54B3AB8429BB37EF00334408 /* default-browser-watcher */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -110,7 +110,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				54B3AB8329BB37EF00334408 /* Default Browser Watcher */,
+				54B3AB8329BB37EF00334408 /* default-browser-watcher */,
 			);
 		};
 /* End PBXProject section */
@@ -270,7 +270,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		54B3AB8B29BB37EF00334408 /* Build configuration list for PBXNativeTarget "Default Browser Watcher" */ = {
+		54B3AB8B29BB37EF00334408 /* Build configuration list for PBXNativeTarget "default-browser-watcher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				54B3AB8C29BB37EF00334408 /* Debug */,
