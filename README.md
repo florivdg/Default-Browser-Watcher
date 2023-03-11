@@ -11,9 +11,22 @@ It then submits the corresponding bundle identifier of the default browser appli
 
 ## Environment variables
 
-Make sure to export these env variables to run the tool.
+Make sure to export these env variables to run the tool in the terminal:
 
 ```shell
 export VERCEL_API_TOKEN="your_api_token"
 export VERCEL_EDGE_CONFIG_ID="your_edge_config_id"
 ```
+
+## LaunchAgent
+
+To run this thing in the background and keep it running after reboots, make it an `LaunchAgent`:
+
+```shell
+cp dev.flori.DefaultBrowserWatcher.agent.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/dev.flori.DefaultBrowserWatcher.agent.plist
+launchctl start dev.flori.DefaultBrowserWatcher
+```
+
+The file above expects the tool to be installed at `/usr/local/bin/default-browser-watcher`.  
+Also make sure to edit the environment variables within the `dev.flori.DefaultBrowserWatcher.agent.plist` accordingly.

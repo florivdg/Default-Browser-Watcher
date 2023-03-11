@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>dev.flori.DefaultBrowserWatcher</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/default-browser-watcher</string>
+    </array>
+    <key>KeepAlive</key>
+    <dict>
+        <key>Crashed</key>
+        <true/>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>VERCEL_EDGE_CONFIG_ID</key>
+        <string>your_egde_config_id</string>
+        <key>VERCEL_API_TOKEN</key>
+        <string>your_api_token</string>
+    </dict>
+</dict>
+</plist>
