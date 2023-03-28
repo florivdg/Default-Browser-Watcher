@@ -8,23 +8,17 @@
 import Foundation
 import AppKit
 
-// Grab the Vercel API token from environment
-guard let vercelApiToken = ProcessInfo.processInfo.environment["VERCEL_API_TOKEN"] else {
-    print("Missing env var \"VERCEL_API_TOKEN\". Bye bye...")
+// Grab the backend API token from environment
+guard let apiToken = ProcessInfo.processInfo.environment["BROWSER_WATCHER_BACKEND_API_TOKEN"] else {
+    print("Missing env var \"BROWSER_WATCHER_BACKEND_API_TOKEN\". Bye bye...")
     exit(0)
 }
 
-// Grab Edge Config ID from environment
-guard let vercelEdgeConfigId = ProcessInfo.processInfo.environment["VERCEL_EDGE_CONFIG_ID"] else {
-    print("Missing env var \"VERCEL_EDGE_CONFIG_ID\". Bye bye...")
-    exit(0)
-}
-
-// Vercel Edge Config API endpoint
-let vercelApiEndpoint = "https://api.vercel.com/v1/edge-config"
+// Backend API endpoint
+let apiEndpoint = "https://browser.flori.dev/set"
 
 // Set the URL of the webhook to submit the default browser changes to
-let webhookURL = URL(string: "\(vercelApiEndpoint)/\(vercelEdgeConfigId)/items")!
+let webhookURL = URL(string: apiEndpoint)!
 
 // Shared workspace
 let workspace = NSWorkspace.shared
@@ -34,7 +28,7 @@ let jsonEncoder = JSONEncoder()
 
 // Set up a session configuration with a short timeout interval
 let sessionConfig = URLSessionConfiguration.default
-sessionConfig.timeoutIntervalForResource = 5
+sessionConfig.timeoutIntervalForResource = 10
 
 // Set up a session with the configured session configuration
 let session = URLSession(configuration: sessionConfig)
@@ -64,13 +58,8 @@ while true {
         let bundle = Bundle(url: newURL!)
         let browserIdentifier = bundle?.bundleIdentifier ?? "unknown"
         let defaultBrowserData = [
-            "items":  [
-                [
-                    "operation": "upsert",
-                    "key": "browser",
-                    "value": browserIdentifier
-                ]
-            ]]
+            "browser": browserIdentifier
+        ]
         
         // Encode the default browser data as JSON
         let jsonData = try! jsonEncoder.encode(defaultBrowserData)
@@ -80,8 +69,8 @@ while true {
         
         // Create a POST request with the JSON data
         var request = URLRequest(url: webhookURL)
-        request.httpMethod = "PATCH"
-        request.addValue("Bearer \(vercelApiToken)", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        request.addValue("Bearer \(apiToken)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsonData
         
@@ -103,6 +92,6 @@ while true {
     // Set the old URL to the current URL
     oldURL = newURL
     
-    // Wait for 5 second before checking again
-    sleep(5)
+    // Wait for 1 second before checking again
+    sleep(1)
 }

@@ -17,9 +17,7 @@
     <true/>
     <key>EnvironmentVariables</key>
     <dict>
-        <key>VERCEL_EDGE_CONFIG_ID</key>
-        <string>your_egde_config_id</string>
-        <key>VERCEL_API_TOKEN</key>
+        <key>BROWSER_WATCHER_BACKEND_API_TOKEN</key>
         <string>your_api_token</string>
     </dict>
 </dict>
