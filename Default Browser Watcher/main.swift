@@ -15,7 +15,7 @@ guard let apiToken = ProcessInfo.processInfo.environment["BROWSER_WATCHER_BACKEN
 }
 
 // Backend API endpoint
-let apiEndpoint = "https://browser.flori.dev/set"
+let apiEndpoint = "https://van-der-hub.flori.dev/browser/set"
 
 // Set the URL of the webhook to submit the default browser changes to
 let webhookURL = URL(string: apiEndpoint)!
