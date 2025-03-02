@@ -47,6 +47,23 @@ signal(SIGINT) { signal in
 
 print("Watching for changes in the default browser setting...")
 
+func getMacModelIdentifier() -> String? {
+    // Determine the size of the data needed.
+    var size: Int = 0
+    sysctlbyname("hw.model", nil, &size, nil, 0)
+    
+    // Create a buffer with the appropriate size.
+    var model = [CChar](repeating: 0, count: size)
+    
+    // Get the model identifier.
+    let result = sysctlbyname("hw.model", &model, &size, nil, 0)
+    if result == 0 {
+        return String(cString: model)
+    } else {
+        return nil
+    }
+}
+
 while true {
     // Get the URL of the current default browser
     let newURL = workspace.urlForApplication(toOpen: webURL)
@@ -57,15 +74,17 @@ while true {
         // If the URL has changed, create a dictionary with the new default browser data
         let bundle = Bundle(url: newURL!)
         let browserIdentifier = bundle?.bundleIdentifier ?? "unknown"
+        let machine = getMacModelIdentifier() ?? "undetermined"
         let defaultBrowserData = [
-            "browser": browserIdentifier
+            "browser": browserIdentifier,
+            "machine": machine
         ]
         
         // Encode the default browser data as JSON
         let jsonData = try! jsonEncoder.encode(defaultBrowserData)
         
         // If the URL has changed, print a message and do something
-        print("Default browser has changed to \(browserIdentifier)")
+        print("Default browser has changed to \(browserIdentifier) on \(machine)")
         
         // Create a POST request with the JSON data
         var request = URLRequest(url: webhookURL)
